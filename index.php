@@ -1,5 +1,5 @@
 <?php
-$salute = 'HELLO WORLD'
+$hotels = include 'hotels.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,9 @@ $salute = 'HELLO WORLD'
 </head>
 
 <body>
-  <?= $salute ?>
+
+  <?php var_dump($hotels) ?>
+
 </body>
 
 </html>
