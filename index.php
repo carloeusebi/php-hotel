@@ -5,6 +5,7 @@ $checkmark = '<i class="fa-solid fa-check"></i>';
 $min_vote = $_GET['min_vote'] ?? '';
 $has_parking = isset($_GET['has_parking']);
 
+
 if ($has_parking) {
   $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
 }
@@ -48,34 +49,41 @@ if ($min_vote) {
         </div>
         <div class="mb-3">
           <button type="submit" class="btn btn-primary ">Search</button>
+          <button type="submit" name="reset" class="btn btn-secondary"> Reset</button>
         </div>
       </form>
     </header>
 
     <main>
-      <table class="table my-5">
-        <thead>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Parking</th>
-          <th scope="vol">Vote</th>
-          <th scope="vol">Distance to Center</th>
-        </thead>
-        <tbody>
-          <?php foreach ($hotels as $hotel) : ?>
-            <tr>
-              <?php foreach ($hotel as $key => $value) :
-                // if key is parking, and parking is true, value is fontawesome for check
-                if ($key === 'parking')
-                  $value = $value ? $checkmark : '';
-              ?>
+      <?php if (empty($hotels)) : ?>
+        <div class="alert alert-primary" role="alert">
+          No hotels found with these search criteria!
+        </div>
+      <?php else : ?>
+        <table class="table my-5">
+          <thead>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parking</th>
+            <th scope="vol">Vote</th>
+            <th scope="vol">Distance to Center</th>
+          </thead>
+          <tbody>
+            <?php foreach ($hotels as $hotel) : ?>
+              <tr>
+                <?php foreach ($hotel as $key => $value) :
+                  // if key is parking, and parking is true, value is fontawesome for check
+                  if ($key === 'parking')
+                    $value = $value ? $checkmark : '';
+                ?>
 
-                <td><?= $value ?></td>
-              <?php endforeach ?>
-            </tr>
-          <?php endforeach ?>
-        </tbody>
-      </table>
+                  <td><?= $value ?></td>
+                <?php endforeach ?>
+              </tr>
+            <?php endforeach ?>
+          </tbody>
+        </table>
+      <?php endif; ?>
     </main>
 
   </div>
