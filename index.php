@@ -1,6 +1,13 @@
 <?php
 $hotels = include 'hotels.php';
 $checkmark = '<i class="fa-solid fa-check"></i>';
+
+$min_vote = $_GET['min_vote'] ?? '';
+$has_parking = isset($_GET['has_parking']);
+
+if ($has_parking) {
+  $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +27,12 @@ $checkmark = '<i class="fa-solid fa-check"></i>';
       <form action="" method="get">
         <div class="mb-3">
           <label for="has_parking">Search only hotels with parking</label>
-          <input type="checkbox" name="has_parking" id="has_parking">
+          <input type="checkbox" name="has_parking" id="has_parking" <?= isset($_GET['has_parking']) ? 'checked' : '' ?>>
         </div>
         <div class="mb-3">
           <label for="min_vote">Search only for vote greater than</label>
-          <select name="min_vote" id="min_vote">
+          <select name="min_vote" id="min_vote" value="<?= $min_vote ?? '' ?>">
+            <option value=""></option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
