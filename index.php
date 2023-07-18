@@ -2,6 +2,11 @@
 $hotels = include 'hotels.php';
 $checkmark = '<i class="fa-solid fa-check"></i>';
 
+if (isset($_GET['reset'])) {
+  unset($_GET['min_vote']);
+  unset($_GET['has_parking']);
+}
+
 $min_vote = $_GET['min_vote'] ?? '';
 $has_parking = isset($_GET['has_parking']);
 
