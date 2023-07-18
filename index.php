@@ -8,6 +8,11 @@ $has_parking = isset($_GET['has_parking']);
 if ($has_parking) {
   $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
 }
+
+if ($min_vote) {
+  $hotels = array_filter($hotels, fn ($hotel) => $hotel['vote'] >= $min_vote);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -30,14 +35,14 @@ if ($has_parking) {
           <input type="checkbox" name="has_parking" id="has_parking" <?= isset($_GET['has_parking']) ? 'checked' : '' ?>>
         </div>
         <div class="mb-3">
-          <label for="min_vote">Search only for vote greater than</label>
-          <select name="min_vote" id="min_vote" value="<?= $min_vote ?? '' ?>">
+          <label for="min_vote">Search only for vote of at least</label>
+          <select name="min_vote" id="min_vote">
             <option value=""></option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option <?= $min_vote === '1' ? 'selected' : '' ?>>1</option>
+            <option <?= $min_vote === '2' ? 'selected' : '' ?>>2</option>
+            <option <?= $min_vote === '3' ? 'selected' : '' ?>>3</option>
+            <option <?= $min_vote === '4' ? 'selected' : '' ?>>4</option>
+            <option <?= $min_vote === '5' ? 'selected' : '' ?>>5</option>
           </select>
         </div>
         <div class="mb-3">
