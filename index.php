@@ -14,8 +14,18 @@ $hotels = include 'hotels.php';
 
 <body>
 
-  <?php var_dump($hotels) ?>
-
+  <ul>
+    <?php foreach ($hotels as $hotel) : ?>
+      <li>
+        <ul>
+          <?php foreach ($hotel as $key => $value) : ?>
+            <li><strong><?= $key ?>: </strong><?= $value ?></li>
+          <?php endforeach ?>
+        </ul>
+      </li>
+      <hr>
+    <?php endforeach ?>
+  </ul>
 </body>
 
 </html>
