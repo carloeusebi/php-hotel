@@ -28,7 +28,8 @@ if ($min_vote) {
 
 <body>
   <div class="container">
-    <header class="my-5 d-flex justify-content-end text-end">
+    <header class="my-5 d-flex justify-content-between align-items-center  text-end">
+      <h1>PHP HOTELS</h1>
       <form action="" method="get">
         <div class="mb-3">
           <label for="has_parking">Search only hotels with parking</label>
