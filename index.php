@@ -15,7 +15,7 @@ if ($has_parking) {
   $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
 }
 
-if ($min_vote) {
+if ($min_vote && is_numeric($min_vote) && $min_vote >= 1 && $min_vote <= 5) {
   $hotels = array_filter($hotels, fn ($hotel) => $hotel['vote'] >= $min_vote);
 }
 
