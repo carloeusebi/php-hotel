@@ -16,6 +16,27 @@ $checkmark = '<i class="fa-solid fa-check"></i>';
 
 <body>
   <div class="container">
+    <header class="my-5 d-flex justify-content-end text-end">
+      <form action="" method="get">
+        <div class="mb-3">
+          <label for="has_parking">Search only hotels with parking</label>
+          <input type="checkbox" name="has_parking" id="has_parking">
+        </div>
+        <div class="mb-3">
+          <label for="min_vote">Search only for vote greater than</label>
+          <select name="min_vote" id="min_vote">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary ">Search</button>
+        </div>
+      </form>
+    </header>
 
     <main>
       <table class="table my-5">
